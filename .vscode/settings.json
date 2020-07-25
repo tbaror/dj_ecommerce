@@ -1,5 +1,5 @@
 {
-  "python.pythonPath": "${workspaceFolder}/env/bin/python3",
+  "python.pythonPath": "C:\\Users\\admin\\.virtualenvs\\django_project_boilerplate-LBD9fkWG\\Scripts\\python.exe",
   "editor.formatOnSave": true,
   "python.linting.pycodestyleEnabled": true,
   "python.linting.pylintEnabled": true,
