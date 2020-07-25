@@ -14,11 +14,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'django.contrib.sites',
+    'core',
 ]
 
 MIDDLEWARE = [
