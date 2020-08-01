@@ -24,6 +24,7 @@ class Item(models.Model):
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug = models.SlugField()
     description = models.TextField()
+    
 
     def __str(self):
         return self.title
@@ -33,9 +34,15 @@ class Item(models.Model):
             'slug': self.slug
         })
 
+    def get_add_to_cart_url(self):
+        return reverse('core:add-to-cart', kwargs={
+            'slug': self.slug
+        })
+        
 
 class OrderItem(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
     
     def __str(self):
         return self.title
