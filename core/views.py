@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
+from django.utils import timezone
 from django.shortcuts import redirect
 from .models import Item, Order, OrderItem
 from django.views.generic import ListView, DetailView
 
-# Create your views here.
 
+# Create your views here.
 
 class HomeView(ListView):
     model = Item
@@ -25,12 +26,10 @@ def add_to_cart(request, slug):
         # check if the order item item is in the order list
         if order.items.filter(item_slug=item.slug).exists():
             order_item.quantity += 100
-            order_item.save
+            order_item.save()
     else:
-        order = Order.objects.create(user=request.user)
+        ordered_date = timezone.now()
+        order = Order.objects.create(user=request.user, ordered_date=ordered_date)
         order.items.add(order_item)
 
-    return redirect("core:product", kwargs={
-        'slug': slug
-    })
-  
+    return redirect("core:product", slug=slug)
